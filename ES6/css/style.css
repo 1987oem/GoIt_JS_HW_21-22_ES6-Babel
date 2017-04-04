@@ -19,6 +19,7 @@ form:nth-of-type(3) {
 
 label {
     display: block;
+    width: 300%;
 }
 
 input[type = "radio"] {

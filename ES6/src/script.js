@@ -1,20 +1,25 @@
+"use strict";
+
 let obj = {
     title: "Тест на проверку знаний",
-    question1: "1. Какая планета Солнечной Системы ближе всего к Солнцу?",
+    question1: "1. Каким образом реализованы области видимости переменных в ECMAScript 6?",
     set1: {
-        answer1: "Меркурий",
-        answer2: "Плутон",
-        answer3: "Венера" },
-    question2: '2. Кто автор Великих реформ 1860х в Российской Империи?',
+        answer1: "Переменные, объявленные при помощи ключевого слова “let” видны только внутри блока {...}",
+        answer2: "При изменении переменной внутри блока, снаружи изменения будут не видны.",
+        answer3: "Все переменные теперь видны только внутри блока {...}"
+    },
+    question2: "2. Каким образом реализованы значения по-умолчанию для функций в ECMAScript 6?",
     set2: {
-        answer1: 'Николай II',
-        answer2: 'Александр II',
-        answer3: 'Александр III' },
-    question3: '3. Какой город является столицей государства Бангладеш?',
+        answer1: "function myFunc(title: ‘Title’, value: 5) {...}",
+        answer2: "function myFunc(title = ‘Title’, value = 5) {...}",
+        answer3: "function myFunc(var title = ‘Title’, var value = 5) {...}"
+    },
+    question3: "3. Каким образом реализовать цикл по массиву arr при помощи итератора?",
     set3: {
-        answer1: 'Манила',
-        answer2: 'Джакарта',
-        answer3: 'Дакка' }
+        answer1: "for (let value in arr) {...}",
+        answer2: "forEach (arr) {...}",
+        answer3: "for (let value of arr) {...}"
+    }
 };
 
 localStorage.setItem('questionnaire', JSON.stringify(obj));

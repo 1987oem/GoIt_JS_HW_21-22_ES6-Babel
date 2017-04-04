@@ -1,33 +1,32 @@
 "use strict";
 
-    var obj = {
-        title: "Тест на проверку знаний",
-        question1: "1. Какая планета Солнечной Системы ближе всего к Солнцу?",
-        set1: {
-            answer1: "Меркурий",
-            answer2: "Плутон",
-            answer3: "Венера"
-        },
-        question2: '2. Кто автор Великих реформ 1860х в Российской Империи?',
-        set2: {
-            answer1: 'Николай II',
-            answer2: 'Александр II',
-            answer3: 'Александр III'
-        },
-        question3: '3. Какой город является столицей государства Бангладеш?',
-        set3: {
-            answer1: 'Манила',
-            answer2: 'Джакарта',
-            answer3: 'Дакка'
-        }
-    };
+var obj = {
+    title: "Тест на проверку знаний",
+    question1: "1. Каким образом реализованы области видимости переменных в ECMAScript 6?",
+    set1: {
+        answer1: "Переменные, объявленные при помощи ключевого слова “let” видны только внутри блока {...}",
+        answer2: "При изменении переменной внутри блока, снаружи изменения будут не видны.",
+        answer3: "Все переменные теперь видны только внутри блока {...}"
+    },
+    question2: "2. Каким образом реализованы значения по-умолчанию для функций в ECMAScript 6?",
+    set2: {
+        answer1: "function myFunc(title: ‘Title’, value: 5) {...}",
+        answer2: "function myFunc(title = ‘Title’, value = 5) {...}",
+        answer3: "function myFunc(var title = ‘Title’, var value = 5) {...}"
+    },
+    question3: "3. Каким образом реализовать цикл по массиву arr при помощи итератора?",
+    set3: {
+        answer1: "for (let value in arr) {...}",
+        answer2: "forEach (arr) {...}",
+        answer3: "for (let value of arr) {...}"
+    }
+};
 
 localStorage.setItem('questionnaire', JSON.stringify(obj));
 var localData = localStorage.getItem('questionnaire');
 var dataObj = JSON.parse(localData);
 
 $(function () {
-
     var $answer1 = dataObj.set1.answer1;
     var $answer2 = dataObj.set2.answer2;
     var $answer3 = dataObj.set3.answer3;
@@ -39,7 +38,7 @@ $(function () {
     $('#button').click(function (e) {
         e.preventDefault();
         $('#overlay').stop().fadeIn(400, function () {
-            $('#modal_form').css('display', 'block').animate({opacity: 1, top: '50%'}, 200);
+            $('#modal_form').css('display', 'block').animate({ opacity: 1, top: '50%' }, 200);
         });
     });
 
@@ -48,7 +47,7 @@ $(function () {
     });
 
     $('.modal_close').click(function () {
-        $('#modal_form').animate({opacity: 0, top: '45%'}, 200, function () {
+        $('#modal_form').animate({ opacity: 0, top: '45%' }, 200, function () {
             $(this).css('display', 'none');
             $('#overlay').stop().fadeOut(400);
             $('.result1').empty();
@@ -122,24 +121,21 @@ $(function () {
     });
 
     $('.button').click(function () {
-            var $final_res = void 0;
-            if ($('input[name=radioName]:checked', 'form:nth-of-type(1)').val() === $answer1) {
-                if ($('input[name=radioName]:checked', 'form:nth-of-type(2)').val() === $answer2) {
-                    if ($('input[name=radioName]:checked', 'form:nth-of-type(3)').val() === $answer3) {
-                        $final_res = "Поздравляем, тест пройден!";
-                    } else {
-                        $final_res = "К сожалению, Вы не прошли тест";
-                    }
+        var $final_res = void 0;
+        if ($('input[name=radioName]:checked', 'form:nth-of-type(1)').val() === $answer1) {
+            if ($('input[name=radioName]:checked', 'form:nth-of-type(2)').val() === $answer2) {
+                if ($('input[name=radioName]:checked', 'form:nth-of-type(3)').val() === $answer3) {
+                    $final_res = "Поздравляем, тест пройден!";
                 } else {
                     $final_res = "К сожалению, Вы не прошли тест";
                 }
             } else {
                 $final_res = "К сожалению, Вы не прошли тест";
             }
-            $('.test_summary').append($final_res);
-        });
+        } else {
+            $final_res = "К сожалению, Вы не прошли тест";
+        }
+
+        $('.test_summary').append($final_res);
     });
-
-
-
-
+});
